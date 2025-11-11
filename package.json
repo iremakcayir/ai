@@ -1,0 +1,9 @@
+{
+  "name": "ai",
+  "private": true,
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "lint": "echo 'No lint script configured'",
+    "test": "echo 'No tests configured'"
+  }
+}
