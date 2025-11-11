@@ -1,0 +1,13 @@
+{
+  "name": "ai-monorepo",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Monorepo containing web and api applications with shared persona configuration package.",
+  "scripts": {
+    "dev:web": "pnpm --filter web dev",
+    "build:web": "pnpm --filter web build",
+    "lint:web": "pnpm --filter web lint",
+    "dev:api": "cd services/api && poetry run uvicorn app.main:app --reload",
+    "install": "pnpm install && cd services/api && poetry install"
+  }
+}

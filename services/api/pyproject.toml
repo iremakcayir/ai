@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "ai-api"
+version = "0.1.0"
+description = "FastAPI service for AI personas"
+authors = ["AI Monorepo <dev@example.com>"]
+readme = "README.md"
+packages = [{ include = "app" }]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pydantic-settings = "2.1.0"
+fastapi = "0.104.1"
+uvicorn = { extras = ["standard"], version = "0.24.0" }
+python-dotenv = "1.0.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "7.4.3"
+httpx = "0.25.1"
+
+[build-system]
+requires = ["poetry-core>=1.6.1"]
+build-backend = "poetry.core.masonry.api"
