@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tam Saat ve Yarım Saat Öğretimi</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="top-bar">
+      <div class="group">
+        <label for="studentSelect">Öğrenci:</label>
+        <select id="studentSelect"></select>
+        <button id="addStudentBtn" class="secondary">Yeni öğrenci ekle</button>
+        <button id="deleteStudentDataBtn" class="danger">Verileri sil (seçili öğrenci)</button>
+      </div>
+      <div class="group">
+        <label for="sessionSelect">Oturum:</label>
+        <select id="sessionSelect">
+          <option value="1">Oturum 1 - Öğretim Öncesi Değerlendirme</option>
+          <option value="2">Oturum 2 - 0 sn Bekleme (Model Olma)</option>
+          <option value="3">Oturum 3 - 4 sn Sonra Yönerge</option>
+          <option value="4">Oturum 4 - Son Değerlendirme</option>
+        </select>
+        <button id="startBtn" class="primary">Başlat</button>
+        <button id="stopBtn" class="secondary" disabled>Durdur</button>
+        <button id="resetSessionBtn" class="secondary" disabled>Oturumu sıfırla</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="main-panel">
+        <div class="status-row">
+          <span id="trialCounter">Deneme: -</span>
+          <span id="sessionStatus">Durum: Hazır</span>
+        </div>
+
+        <div class="clock-container">
+          <canvas id="clockCanvas" width="320" height="320" aria-label="Analog saat"></canvas>
+        </div>
+
+        <div id="countdownBarWrapper" class="countdown hidden" aria-hidden="true">
+          <div id="countdownBar" class="countdown-bar"></div>
+        </div>
+
+        <p id="instructionText" class="instruction">Oturum seçip başlatın.</p>
+        <p id="digitalAnswer" class="digital-answer hidden">-</p>
+        <p id="feedbackText" class="feedback"></p>
+
+        <div id="summaryCard" class="summary hidden"></div>
+      </section>
+
+      <aside class="side-panel">
+        <h2>Yanıt Girişi</h2>
+        <div id="responsePanel">
+          <div class="hours-grid" id="hourButtons"></div>
+          <div class="minutes-row">
+            <button class="minute-btn" data-minute="00">00</button>
+            <button class="minute-btn" data-minute="30">30</button>
+          </div>
+          <div class="selection-row">
+            <span>Seçim:</span>
+            <strong id="selectedResponse">-</strong>
+          </div>
+          <button id="submitBtn" class="primary">Yanıtla</button>
+          <button id="nextBtn" class="secondary" disabled>Sonraki</button>
+        </div>
+      </aside>
+    </main>
+
+    <section class="data-panel">
+      <h2>Veri Paneli</h2>
+      <div class="filters">
+        <label for="filterSession">Oturum filtresi:</label>
+        <select id="filterSession">
+          <option value="all">Tümü</option>
+          <option value="1">Oturum 1</option>
+          <option value="2">Oturum 2</option>
+          <option value="3">Oturum 3</option>
+          <option value="4">Oturum 4</option>
+        </select>
+        <button id="exportSelectedCsv" class="secondary">CSV dışa aktar (seçili öğrenci)</button>
+        <button id="exportAllCsv" class="secondary">CSV dışa aktar (tüm öğrenciler)</button>
+      </div>
+      <div id="metricsBox" class="metrics-box"></div>
+      <div class="table-wrapper">
+        <table id="trialsTable">
+          <thead>
+            <tr>
+              <th>Tarih/Saat</th>
+              <th>Öğrenci</th>
+              <th>Oturum</th>
+              <th>Deneme</th>
+              <th>Hedef</th>
+              <th>Sunum türü</th>
+              <th>Yönerge zamanı</th>
+              <th>Yanıt</th>
+              <th>Doğru</th>
+              <th>Latency (ms)</th>
+              <th>Dönüt</th>
+              <th>Not</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer class="usage">
+      <h3>Kısa kullanım yönergesi</h3>
+      <ol>
+        <li>Önce öğrenci ekleyin veya listeden öğrenci seçin.</li>
+        <li>Oturum seçin ve <strong>Başlat</strong> butonuna basın.</li>
+        <li>Oturuma göre yanıt verin veya <strong>Devam/Sonraki</strong> ile ilerleyin.</li>
+        <li>Oturum sonunda özeti inceleyin; veri panelinden filtreleyin ve CSV alın.</li>
+        <li><strong>Verileri sil</strong> yalnızca seçili öğrencinin tüm kayıtlarını temizler.</li>
+      </ol>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
